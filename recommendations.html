@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ mood }} Mood Recommendations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url("/static/library.jpeg");
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: #333;
+            padding: 50px;
+            margin: 0;
+        }
+        h1 {
+            margin-bottom: 30px;
+            color: #fff;  
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        li {
+            background-color: #f2e9db; 
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: left;
+            position: relative;
+        }
+        li:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease-out;
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+        .book-title {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: #4a4a4a; 
+        }
+        .book-author {
+            font-style: italic;
+            color: #7a7a7a; 
+        }
+        .icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            color: #b5651d; 
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: #b5651d; 
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .back-link:hover {
+            background-color: #8e4716; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Books for {{ mood }} Mood</h1>
+    <ul>
+        {% for book in books %}
+            <li>
+                <i class="fas fa-book icon"></i>
+                <div class="book-title">{{ book.split(' by ')[0] }}</div>
+                <div class="book-author">{{ book.split(' by ')[1] }}</div>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="/" class="back-link">Back to Mood Selection</a>
+</body>
+</html>
